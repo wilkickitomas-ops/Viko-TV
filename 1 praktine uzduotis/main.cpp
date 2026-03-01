@@ -38,4 +38,5 @@ int main() {
         case 1:
             cout << skaicius1 << endl;
     }
+    //test
 }
