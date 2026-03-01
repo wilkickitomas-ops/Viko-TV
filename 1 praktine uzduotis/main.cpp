@@ -4,8 +4,10 @@ using namespace std;
 
 int main() {
 
-    int pasirinkimas;
-    float skaicius1, skaicius2;
+    int pasirinkimas, valiuta;
+    string PavValuta;
+    float bendras, pirkti, parduoti, kiekis, rezultatas;
+
 //Kursas už 1 Eurą
     //GBP
     const float GBP_Bendras   = 0.8729;
@@ -27,16 +29,50 @@ int main() {
     cout << "3 - Parduoti valiuta" << endl;
     cin >> pasirinkimas;
 
-    cout << "===Pasirinkit valiuta===" << endl;
-
-
-
-    cout << "iveskite euro kieki" << endl;
-    cin >> skaicius1;
-
-    switch (pasirinkimas) {
-        case 1:
-            cout << skaicius1 << endl;
+//Pasirinkimo patikrinimas
+    if (pasirinkimas >= 1, pasirinkimas <=43 ) {
+        cout << "puikus pasirinkimas" << endl;
     }
-    //test
+    else {
+        cout << "tokio pasirinkimo nera" << endl;
+        return 0;
+    }
+
+    cout << "===Pasirinkit valiuta===" << endl;
+    cout << "1 - GBP (Svaras)" << endl;
+    cout << "2 - USD (Doleris)" << endl;
+    cout << "3 - INR (Rupija)" << endl;
+    cin >> valiuta;
+
+    switch (valiuta) {
+        case 1:
+            PavValuta = "GBP";
+            bendras = USD_Bendras;
+            pirkti = USD_Pirkti;
+            parduoti = USD_Parduoti;
+            break;
+        case 2:
+            PavValuta = "USD";
+            bendras = USD_Bendras;
+            pirkti = USD_Pirkti;
+            parduoti = USD_Parduoti;
+            break;
+        case 3:
+            PavValuta = "INR";
+            bendras = INR_Bendras;
+            pirkti = INR_Pirkti;
+            parduoti = INR_Parduoti;
+            break;
+        default:
+            cout << "tokio pasirinkimo nera...";
+            return 0;
+    }
+
+    if (pasirinkimas == 1) {
+        cout << "Valiutos " << PavValuta << " kursai:\n";
+        cout << "Bendras kursas: " << bendras << endl;
+        cout << "Pirkimo kursas: " << pirkti << endl;
+        cout << "Pardavimo kursas: " << parduoti << endl;
+    }
+    
 }
