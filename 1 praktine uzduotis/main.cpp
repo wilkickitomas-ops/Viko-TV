@@ -30,8 +30,7 @@ int main() {
     cin >> pasirinkimas;
 
 //Pasirinkimo patikrinimas
-    if (pasirinkimas >= 1, pasirinkimas <=43 ) {
-        cout << "puikus pasirinkimas" << endl;
+    if (pasirinkimas >= 1, pasirinkimas <=3 ) {
     }
     else {
         cout << "tokio pasirinkimo nera" << endl;
@@ -47,9 +46,9 @@ int main() {
     switch (valiuta) {
         case 1:
             PavValuta = "GBP";
-            bendras = USD_Bendras;
-            pirkti = USD_Pirkti;
-            parduoti = USD_Parduoti;
+            bendras = GBP_Bendras;
+            pirkti = GBP_Pirkti;
+            parduoti = GBP_Parduoti;
             break;
         case 2:
             PavValuta = "USD";
@@ -67,12 +66,35 @@ int main() {
             cout << "tokio pasirinkimo nera...";
             return 0;
     }
-
+//Kurso palyginimas
     if (pasirinkimas == 1) {
         cout << "Valiutos " << PavValuta << " kursai:\n";
         cout << "Bendras kursas: " << bendras << endl;
         cout << "Pirkimo kursas: " << pirkti << endl;
         cout << "Pardavimo kursas: " << parduoti << endl;
     }
-    
+//valiutos pirkimas (EUR > valiuta)
+    else if (pasirinkimas == 2) {
+        cout << "kiek (EUR) norite apkeist:" << endl;
+
+        cin >> kiekis;
+
+        rezultatas =  pirkti * kiekis;
+
+        cout << kiekis << " Eur = " << rezultatas << " " << PavValuta << endl;
+        cout << "jusu galusit " << rezultatas << " " << PavValuta;
+    }
+//valiutos pardavimas (valiuta > EUR)
+    else if (pasirinkimas == 3) {
+        cout << "koki kieki norite parduot? \n" << PavValuta <<endl;
+
+        cin >> kiekis;
+
+        rezultatas = kiekis * parduoti;
+        cout << kiekis << " " << PavValuta << " = " << rezultatas << " EUR";
+    }
+    else {
+        cout << "nera tokio pasirinkimo";
+    }
+    return 0;
 }
