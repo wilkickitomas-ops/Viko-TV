@@ -4,7 +4,7 @@ using namespace std;
 
 int main() {
 
-    int pasirinkimas, valiuta;
+    int pasirinkimas, valiuta, reset;
     string PavValuta;
     float bendras, pirkti, parduoti, kiekis, rezultatas;
 
@@ -22,14 +22,15 @@ int main() {
     const float INR_Pirkti    = 101.3862;
     const float INR_Parduoti  = 107.8546;
 
-
+    //loop funkcija
+    do {
     cout << "===Valiutos keityklos===" << endl;
     cout << "1 - Valiutos kurso palyginimas su kita valiuta" << endl;
     cout << "2 - Isigyti valiuta" << endl;
     cout << "3 - Parduoti valiuta" << endl;
     cin >> pasirinkimas;
 
-//Pasirinkimo patikrinimas
+    //Pasirinkimo patikrinimas
     if (pasirinkimas >= 1, pasirinkimas <=3 ) {
     }
     else {
@@ -66,14 +67,14 @@ int main() {
             cout << "tokio pasirinkimo nera...";
             return 0;
     }
-//Kurso palyginimas
+    //Kurso palyginimas
     if (pasirinkimas == 1) {
         cout << "Valiutos " << PavValuta << " kursai:\n";
         cout << "Bendras kursas: " << bendras << endl;
         cout << "Pirkimo kursas: " << pirkti << endl;
         cout << "Pardavimo kursas: " << parduoti << endl;
     }
-//valiutos pirkimas (EUR > valiuta)
+    //valiutos pirkimas (EUR > valiuta)
     else if (pasirinkimas == 2) {
         cout << "kiek (EUR) norite apkeist:" << endl;
 
@@ -84,7 +85,7 @@ int main() {
         cout << kiekis << " Eur = " << rezultatas << " " << PavValuta << endl;
         cout << "jusu galusit " << rezultatas << " " << PavValuta;
     }
-//valiutos pardavimas (valiuta > EUR)
+    //valiutos pardavimas (valiuta > EUR)
     else if (pasirinkimas == 3) {
         cout << "koki kieki norite parduot? \n" << PavValuta <<endl;
 
@@ -96,5 +97,11 @@ int main() {
     else {
         cout << "nera tokio pasirinkimo";
     }
+
+cout << "\n\n\n1 kad pakartot, kiti skaiciai uzdaro programa" <<endl;
+cin >> reset;
+    }while (reset==1);
+
+    cout << "bye bye " ;
     return 0;
 }
