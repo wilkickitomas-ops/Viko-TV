@@ -80,7 +80,7 @@ int main() {
 
         cin >> kiekis;
 
-        rezultatas =  pirkti * kiekis;
+        rezultatas =  kiekis * pirkti;
 
         cout << kiekis << " Eur = " << rezultatas << " " << PavValuta << endl;
         cout << "jusu galusit " << rezultatas << " " << PavValuta;
@@ -91,14 +91,14 @@ int main() {
 
         cin >> kiekis;
 
-        rezultatas = kiekis * parduoti;
+        rezultatas = kiekis / parduoti;
         cout << kiekis << " " << PavValuta << " = " << rezultatas << " EUR";
     }
     else {
         cout << "nera tokio pasirinkimo";
     }
 
-cout << "\n\n\n1 kad pakartot, kiti skaiciai uzdaro programa" <<endl;
+cout << "\n\n1 kad pakartot, kiti skaiciai uzdaro programa" <<endl;
 cin >> reset;
     }while (reset==1);
 
