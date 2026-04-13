@@ -15,4 +15,4 @@ struct menuItemType {
 int main() {
     cout << "3 praktine užduotis" << endl;
     return 0;
-}
+};
