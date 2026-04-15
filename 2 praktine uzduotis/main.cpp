@@ -156,6 +156,7 @@ int main() {
 
         case 0:
             cout << "Baigta.\n";
+                pasirinkimas = 0;
             break;
 
         default:
