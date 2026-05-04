@@ -78,12 +78,14 @@ void printCheck(const menuItemType menuList[], int itemCount) {
     int choice, quantity;
     double subtotal = 0.0;
 
-    fout << "Sveiki atvyke i restorana Barbora piceria" << endl << endl;
+    int orderedItem[MAX_ITEMS];
+    int orderedQty[MAX_ITEMS];
+    int orderCount = 0;
+
     cout << endl;
 
-
     while (true) {
-        cout << "Iveskite patiekalo numeris ir kieki: ";
+        cout << "Iveskite patiekalo numeri ir kieki: ";
         cin >> choice >> quantity;
 
         if (choice == 0 && quantity == 0) {
@@ -95,12 +97,12 @@ void printCheck(const menuItemType menuList[], int itemCount) {
             continue;
         }
 
+        orderedItem[orderCount] = choice - 1;
+        orderedQty[orderCount] = quantity;
+        orderCount++;
+
         double itemTotal = menuList[choice - 1].menuPrice * quantity;
         subtotal += itemTotal;
-
-        fout << quantity << "  "
-             << left << setw(35) << menuList[choice - 1].menuItem
-             << right << fixed << setprecision(2) << itemTotal << " EUR" << endl;
 
         cout << quantity << "  "
              << left << setw(35) << menuList[choice - 1].menuItem
@@ -110,13 +112,31 @@ void printCheck(const menuItemType menuList[], int itemCount) {
     double vat = subtotal * VAT_RATE;
     double total = subtotal + vat;
 
-    fout << endl;
-    fout << "Mokesciai (21%): " << fixed << setprecision(2) << vat << " EUR" << endl;
-    fout << "Galutine suma:   " << fixed << setprecision(2) << total << " EUR" << endl;
+    cout << endl << "Sveiki atvyke i restorana Barbora piceria" << endl;
+    fout << "Sveiki atvyke i restorana Barbora piceria" << endl << endl;
+
+    for (int i = 0; i < orderCount; i++) {
+        int index = orderedItem[i];
+        double itemTotal = menuList[index].menuPrice * orderedQty[i];
+
+        cout << orderedQty[i] << "  "
+             << left << setw(35) << menuList[index].menuItem
+             << right << fixed << setprecision(2) << itemTotal << " EUR" << endl;
+
+        fout << orderedQty[i] << "  "
+             << left << setw(35) << menuList[index].menuItem
+             << right << fixed << setprecision(2) << itemTotal << " EUR" << endl;
+    }
 
     cout << endl;
+    cout << "Suma be PVM:     " << fixed << setprecision(2) << subtotal << " EUR" << endl;
     cout << "Mokesciai (21%): " << fixed << setprecision(2) << vat << " EUR" << endl;
     cout << "Galutine suma:   " << fixed << setprecision(2) << total << " EUR" << endl;
+
+    fout << endl;
+    fout << "Suma be PVM:     " << fixed << setprecision(2) << subtotal << " EUR" << endl;
+    fout << "Mokesciai (21%): " << fixed << setprecision(2) << vat << " EUR" << endl;
+    fout << "Galutine suma:   " << fixed << setprecision(2) << total << " EUR" << endl;
 
     fout.close();
 
