@@ -43,7 +43,60 @@ vector<int> generateReverseSortedData(int size) {
     return data;
 }
 
+void insertionSort(vector<int>& arr, Stats& stats) {
+    int n = arr.size();
+
+    for (int i = 1; i < n; i++) {
+        int key = arr[i];
+        int j = i - 1;
+
+        while (j >= 0) {
+            stats.comparisons++;
+
+            if (arr[j] > key) {
+                arr[j + 1] = arr[j];
+                stats.swaps++;
+                j--;
+            }
+            else {
+                break;
+            }
+        }
+
+        arr[j + 1] = key;
+    }
+}
+
 int main() {
-    cout << "Data generation ready." << endl;
+
+    vector<int> data = generateRandomData(20);
+
+    Stats stats;
+
+    insertionSort(data, stats);
+
+    cout << "Iterpimo algoritmas" << endl;
+
+    cout << "pries sortiravima: ";
+
+    for (int num : data) {
+        cout << num << " ";
+    }
+
+    cout << endl;
+
+    insertionSort(data, stats);
+
+    cout << "po sortiravimo: ";
+
+    for (int num : data) {
+        cout << num << " ";
+    }
+
+    cout << endl;
+
+    cout << "paliginimai: " << stats.comparisons << endl;
+    cout << "apkeitimai: " << stats.swaps << endl;
+
     return 0;
 }
